@@ -121,7 +121,7 @@
       text-decoration: underline;
       color: var(--accent);
     }
-    .about, .contact {
+    .about, .contact, .intro {
       background: var(--card-bg);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -130,6 +130,7 @@
       margin: 1.5em 0;
       color: var(--text);
     }
+    ul { margin-top: 0.5em; margin-bottom: 1em; }
     @media (max-width: 600px) {
       header h1 { font-size: 1.5rem; }
       main { padding: 0 0.5em; }
@@ -141,6 +142,7 @@
     <h1>Sjoerd Verhagen</h1>
     <p>Data Analyst | SQL | Python | Tableau</p>
     <nav>
+      <a href="#intro">Introduction</a>
       <a href="#projects">Projects</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -148,6 +150,38 @@
   </header>
 
   <main>
+    <!-- INTRODUCTION -->
+    <section id="intro">
+      <div class="section-title">Introduction</div>
+      <div class="intro">
+        <p>My girlfriend and I will move to Barcelona in September 2025. To put my new skills in <strong>Python</strong>, <strong>SQL</strong>, and <strong>Tableau</strong> into practice, I chose a project that’s both personally relevant and a good showcase of what I’ve learned.</p>
+
+        <p>To prepare for our move, I analyzed the rental market using data from <strong>Idealista</strong>, the city’s most popular housing platform. With a student budget in mind, I focused on furnished flats under €2,000 a month to see what’s realistic and where to begin our search. The goal was to narrow down neighbourhood options, get a feel for the city, and find out which areas best suit our needs.</p>
+
+        <h4>Questions I aimed to answer:</h4>
+        <ul>
+          <li>Which districts offer the best value for money (€/m²)?</li>
+          <li>Which districts have the largest rental supply?</li>
+          <li>What are the average sizes and rents by district?</li>
+        </ul>
+
+        <h4>Deeper insights I explored:</h4>
+        <ul>
+          <li><strong>Two-bedroom vs. one-bedroom:</strong> How much more do two-bedroom flats cost? We'd like space for friends to stay over.</li>
+          <li><strong>Quiet vs. central:</strong> Which districts just outside the centre (like Gràcia, Poble-Sec, Poblenou, Sants, and Sant Antoni) offer a good balance of price and space?</li>
+        </ul>
+
+        <h4>Tools I used:</h4>
+        <ul>
+          <li><strong>Open Web Scraper</strong> – for collecting rental data</li>
+          <li><strong>Python</strong> – for cleaning and preparing the data</li>
+          <li><strong>Open Geo Code</strong> – for mapping coordinates</li>
+          <li><strong>SQL</strong> – for queries and aggregations</li>
+          <li><strong>Tableau</strong> – for creating clear visual insights</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- PROJECTS -->
     <section id="projects">
       <div class="section-title">Featured Projects</div>
@@ -163,14 +197,6 @@
             </div>
             <div class="project-description">
               <strong>Goal:</strong> Analyze rental prices and supply hotspots in Barcelona.
-              <br><br>
-              <strong>Steps:</strong>
-              <ol>
-                <li>Collected rental listings data from Idealista.</li>
-                <li>Cleaned and prepared data with SQL (CTEs, joins).</li>
-                <li>Compared price/m² across districts and flat sizes.</li>
-                <li>Built Tableau dashboards to visualize insights.</li>
-              </ol>
             </div>
           </div>
           <div class="project-links">
@@ -191,13 +217,6 @@
             </div>
             <div class="project-description">
               <strong>Goal:</strong> Identify what makes restaurants popular in Barcelona.
-              <br><br>
-              <strong>Steps:</strong>
-              <ol>
-                <li>Cleaned restaurant dataset in Python (pandas).</li>
-                <li>Analyzed patterns in ratings & cuisine types.</li>
-                <li>Visualized popularity factors in Tableau.</li>
-              </ol>
             </div>
           </div>
           <div class="project-links">
