@@ -6,45 +6,73 @@
   <title>Barcelona Rental Market Analysis | Sjoerd Verhagen</title>
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
   <style>
+    /* ✅ BASIC PAGE STYLING */
     body { font-family: 'Inter', Arial, sans-serif; background: #f7f9fc; color: #222; margin: 0; padding: 20px; line-height: 1.6; max-width: 800px; margin: auto;}
     h1 { color: #2d6cdf; }
     h2 { margin-top: 1.2em; }
-    pre { background: #eee; padding: 10px; border-radius: 8px; overflow-x: auto; }
+    pre code { display: block; background: #1e1e1e; color: #f8f8f2; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.95em; overflow-x: auto; }
     img { max-width: 100%; border-radius: 8px; margin: 15px 0; }
     a { color: #2d6cdf; }
+
+    /* ✅ SYNTAX COLORS FOR SQL & PYTHON */
+    .sql-keyword { color: #569cd6; font-weight: bold; }
+    .sql-func { color: #4ec9b0; }
+    .sql-string { color: #d69d85; }
+    .py-keyword { color: #569cd6; font-weight: bold; }
+    .py-func { color: #dcdcaa; }
+    .py-var { color: #9cdcfe; }
+    .py-string { color: #ce9178; }
   </style>
 </head>
 <body>
+
+  <!-- ✅ PAGE CONTENT STARTS HERE -->
   <h1>Barcelona Rental Market Analysis</h1>
-  <p><strong>Goal:</strong> Understand rental value per district, supply hotspots, and price differences between 1- and 2-bed flats.</p>
+  <p><strong>Goal:</strong> Understand rental value per district, supply hotspots, and price gaps between 1- and 2-bed flats.</p>
 
   <h2>Step 1: Data Collection</h2>
-  <p>Collected rental listing data (< €2,000) from Idealista using their export feature.</p>
+  <p>Collected rental data from Idealista for furnished flats under €2,000/month.</p>
 
-  <h2>Step 2: Cleaning & Preparation (SQL)</h2>
+  <!-- ✅ SQL CODE BLOCK -->
+  <h2>Step 2: Cleaning (SQL)</h2>
   <pre><code>
--- Example query:
-SELECT district, price, size_m2, price/size_m2 AS price_per_m2
-FROM rentals
-WHERE price < 2000;
+<span class="sql-keyword">SELECT</span> district,
+       price,
+       size_m2,
+       price / size_m2 <span class="sql-keyword">AS</span> price_per_m2
+<span class="sql-keyword">FROM</span> rentals
+<span class="sql-keyword">WHERE</span> price &lt; 2000;
   </code></pre>
 
-  <h2>Step 3: Analysis</h2>
-  <ul>
-    <li>Compared €/m² across districts.</li>
-    <li>Measured supply variance by district.</li>
-    <li>Calculated price gaps between 1- and 2-bed flats.</li>
-  </ul>
+  <!-- ✅ PYTHON CODE BLOCK -->
+  <h2>Step 3: EDA (Python)</h2>
+  <pre><code>
+<span class="py-keyword">import</span> pandas <span class="py-keyword">as</span> pd
+df = pd.read_csv(<span class="py-string">'rentals.csv'</span>)
+df.groupby(<span class="py-string">'district'</span>)['price_per_m2'].mean().sort_values()
+  </code></pre>
 
-  <h2>Step 4: Visualization</h2>
-  <p>Created Tableau dashboards:</p>
+  <!-- ✅ TABLEAU (Option A: Embed interactive) -->
+  <h2>Step 4: Tableau Dashboard</h2>
+  <div style="position: relative; width: 100%; height: 800px;">
+    <iframe 
+      src="https://public.tableau.com/views/YOUR-DASHBOARD?:showVizHome=no&:embed=true"
+      width="100%" 
+      height="800" 
+      frameborder="0">
+    </iframe>
+  </div>
+
+  <!-- ✅ OR (Option B: Screenshot + button) -->
+  <!--
   <img src="assets/rental_dashboard.png" alt="Rental Dashboard">
-
-  <h2>Links</h2>
   <p>
-    🔗 <a href="https://github.com/yourusername/portfolio/sql/rental_analysis.sql" target="_blank">View SQL Code</a><br>
-    📊 <a href="https://public.tableau.com/yourdashboard" target="_blank">View Tableau Dashboard</a>
+    <a href="https://public.tableau.com/views/YOUR-DASHBOARD" target="_blank"
+       style="display:inline-block;background:#2d6cdf;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none;">
+       🔗 View Live Dashboard
+    </a>
   </p>
+  -->
 
   <p><a href="index.html">⬅ Back to Portfolio</a></p>
 </body>
